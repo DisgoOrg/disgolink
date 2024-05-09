@@ -87,22 +87,24 @@ To play a track you first need to resolve the song. For this you need to call th
 ```go
 query := "ytsearch:Rick Astley - Never Gonna Give You Up"
 
-err := lavalinkClient.BestNode().LoadTracksHandler(context.TODO(), query, lavalink.NewResultHandler(
-		func(track lavalink.AudioTrack) {
-			// Loaded a single track
-		},
-		func(playlist lavalink.AudioPlaylist) {
-			// Loaded a playlist
-		},
-		func(tracks []lavalink.AudioTrack) {
-			// Loaded a search result
-		},
-		func() {
-			// nothing matching the query found
-		},
-		func(ex lavalink.FriendlyException) {
-			// something went wrong while loading the track
-		},
+var toPlay *lavalink.Track
+lavalinkClient.BestNode().LoadTracksHandler(context.TODO(), query, disgolink.NewResultHandler(
+	func(track lavalink.Track) {
+		// Loaded a single track
+		toPlay = &track
+	},
+	func(playlist lavalink.Playlist) {
+		// Loaded a playlist
+	},
+	func(tracks []lavalink.Track) {
+		// Loaded a search result
+	},
+	func() {
+		// nothing matching the query found
+	},
+	func(err error) {
+		// something went wrong while loading the track
+	},
 ))
 ```
 
@@ -122,8 +124,8 @@ after this you can get/create your player and play the track
 ```go
 player := lavalinkClient.Player("guild_id") // This will either return an existing or new player
 
-var track lavalink.Track // track from result handler before
-err := player.Play(track)
+// toPlay is from result handler in the example above
+err := player.Update(context.TODO(), lavalink.WithTrack(*toPlay))
 ```
 now audio should start playing
 
