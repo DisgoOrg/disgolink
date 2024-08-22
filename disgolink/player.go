@@ -209,14 +209,6 @@ func (p *playerImpl) OnEvent(event lavalink.Event) {
 		p.track = &e.Track
 
 	case lavalink.TrackEndEvent:
-		if e.Reason != lavalink.TrackEndReasonReplaced && e.Reason != lavalink.TrackEndReasonStopped {
-			p.track = nil
-		}
-
-	case lavalink.TrackExceptionEvent:
-		p.track = nil
-
-	case lavalink.TrackStuckEvent:
 		p.track = nil
 
 	case lavalink.WebSocketClosedEvent:
