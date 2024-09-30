@@ -189,8 +189,8 @@ func onWebSocketClosed(player disgolink.Player, event lavalink.WebSocketClosedEv
 
 ### Plugins
 
-Lavalink added [plugins](https://github.com/freyacodes/Lavalink/blob/master/PLUGINS.md) in `v3.5` . DisGoLink exposes a similar API for you to use. With that you can create plugins which require server & client work.
-To see what you can do with plugins see [here](https://github.com/disgoorg/disgolink/blob/v2/disgolink/plugin.go)
+Lavalink added [plugins](https://lavalink.dev/plugins.html) in `v3.5` . DisGoLink exposes a similar API for you to use. With that you can create plugins which require server & client work.
+To see what you can do with plugins see [here](disgolink/plugin.go)
 
 You register plugins when creating the client instance like this
 ```go
@@ -198,7 +198,11 @@ lavalinkClient := disgolink.New(userID, disgolink.WithPlugins(yourPlugin))
 ```
 
 Here is a list of plugins(you can pr your own to here):
-* [sponsorblock](https://github.com/disgoorg/sponsorblock-plugin) adds payloads and listeners for [Lavalink Sponsorblock-Plugin](https://github.com/Topis-Lavalink-Plugins/Sponsorblock-Plugin)
+* [SponsorBlock](https://github.com/disgoorg/sponsorblock-plugin) support for [Lavalink Sponsorblock-Plugin](https://github.com/topi314/SponsorBlock-Plugin)
+* [LavaQueue](https://github.com/disgoorg/lavaqueue-plugin) support for [Lavalink LavaQueue-Plugin](https://github.com/topi314/LavaQueue)
+* [LavaSrc](https://github.com/disgoorg/sponsorblock-plugin) support for [Lavalink LavaSrc-Plugin](https://github.com/topi314/LavaSrc)
+* [LavaLyrics](https://github.com/disgoorg/lavalyrics-plugin) support for [Lavalink LavaLyrics-Plugin](https://github.com/topi314/LavaLyrics)
+* [LavaSearch](https://github.com/disgoorg/lavasearch-plugin) support for [Lavalink LavaSearch-Plugin](https://github.com/topi314/LavaSearch)
 
 ## Examples
 
