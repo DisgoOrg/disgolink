@@ -78,9 +78,10 @@ type Empty struct{}
 func (Empty) loadResultData() {}
 
 type Exception struct {
-	Message  string   `json:"message"`
-	Severity Severity `json:"severity"`
-	Cause    *string  `json:"cause,omitempty"`
+	Message         string   `json:"message"`
+	Severity        Severity `json:"severity"`
+	Cause           string   `json:"cause"`
+	CauseStackTrace string   `json:"causeStackTrace"`
 }
 
 func (Exception) loadResultData() {}
